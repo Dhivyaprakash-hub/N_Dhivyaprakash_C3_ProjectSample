@@ -51,5 +51,14 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1, service.getRestaurants().size());
 
     }
+    @Test
+    public void getOrderValue_should_return_correct_total_price_for_selected_items() {
+        restaurant.addToMenu("Item 1", 100);
+        restaurant.addToMenu("Item 2", 200);
+        restaurant.addToMenu("Item 3", 300);
 
+        int orderValue = restaurant.getOrderValue("Item 1", "Item 3");
+
+        assertEquals(400, orderValue);
+    }
 }
